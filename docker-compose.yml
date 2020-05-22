@@ -1,0 +1,21 @@
+version: "3"
+services:
+    mongo:
+        image: mongo
+        container_name: mongo-container
+        restart: unless-stopped
+        networks: 
+            noms: 
+                ipv4_address: 172.16.1.2
+        ports:
+            - "27017:27017"
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root_username
+            - MONGO_INITDB_ROOT_PASSWORD=very_secure_root_pass
+        volumes:
+            - /home/tom/Docker/mongoDB/data:/data/db
+            - /home/tom/Docker/mongoDB/script/:/docker-entrypoint-initdb.d/
+networks:
+    noms:
+        external:
+            name: noms
