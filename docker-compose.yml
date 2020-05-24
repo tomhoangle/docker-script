@@ -18,4 +18,4 @@ services:
 networks:
     noms:
         external:
-            name: noms
+            name: something
